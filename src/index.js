@@ -9,3 +9,5 @@ ReactDOM.render(
   <App />,
   document.querySelector('#root')
 );
+
+ServiceWorker.register();

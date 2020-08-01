@@ -62,6 +62,7 @@ const getMoment = (locationName) => {
     `${locationDate.dataTime} ${locationDate.sunset}`
   ).unix();
   const nowTimeStamp = now.unix();
+  console.log(sunriseTimestamp, sunsetTimestamp, nowTimeStamp)
 
   return sunriseTimestamp <= nowTimeStamp && nowTimeStamp <= sunsetTimestamp
     ? 'day'
@@ -88,6 +89,7 @@ const WeatherApp = () => {
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
+      {console.log(moment)}
       <Container>
         {currentPage === 'WeatherCard' && (
           <WeatherCard
