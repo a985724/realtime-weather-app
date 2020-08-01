@@ -18,7 +18,7 @@ const WeatherCardWrapper = styled.div`
   padding: 30px 15px;
 `;
 
-const Cog= styled(CogIcon)`
+const Cog = styled(CogIcon)`
   position: absolute;
   top: 30px;
   right: 15px;
@@ -118,39 +118,42 @@ const Refresh = styled.div`
 const WeatherCard = (props) => {
   const { weatherElement, moment, fetchData, setCurrentPage, cityName } = props;
   const { observationTime, temperature, windSpeed, description, weatherCode, rainPossibility, comfortability, isLoading } = weatherElement;
-  
+
   return (
     <WeatherCardWrapper>
       <Cog onClick={() => setCurrentPage('WeatherSetting')} />
       <Location>{cityName}</Location>
-        <Description>
-            {description} {comfortability}
-          </Description>
-        <CurrentWeather>
-            <Temperature>
-              {Math.round(temperature)} <Celsius>°C</Celsius>
-            </Temperature>
-            <WeatherIcon
-              currentWeatherCode={weatherCode}
-              moment={moment || 'night'}
-            />
-          </CurrentWeather>
-        <AirFlow>
-            <AirFlowIcon />
-            {windSpeed} m/h
+      <Description>
+        {description} {comfortability}
+      </Description>
+      <CurrentWeather>
+        <Temperature>
+          {Math.round(temperature)} <Celsius>°C</Celsius>
+        </Temperature>
+        <WeatherIcon
+          currentWeatherCode={weatherCode}
+          moment={moment || 'night'}
+        />
+      </CurrentWeather>
+      <AirFlow>
+        <AirFlowIcon />
+        {windSpeed} m/h
           </AirFlow>
-        <Rain>
-            <RainIcon />
-            {Math.round(rainPossibility)} %
+      <Rain>
+        <RainIcon />
+        {Math.round(rainPossibility)} %
         </Rain>
-        <Refresh
-            onClick={fetchData}
-            isLoading={isLoading}
-          >
-            最後觀測時間：
-            {dayjs(observationTime).format('YYYY年MM月DD日 HH點mm分')}{' '}
-            {isLoading ? <Loading /> : <RefreshIcon />}
-          </Refresh>
+      <Refresh
+        onClick={fetchData}
+        isLoading={isLoading}
+      >
+        最後觀測時間：
+          {new Intl.DateTimeFormat('zh-TW', {
+            hour: 'numeric',
+            minute: 'numeric',
+          }).format(dayjs(observationTime))}{' '}
+        {isLoading ? <Loading /> : <RefreshIcon />}
+      </Refresh>
     </WeatherCardWrapper>
   )
 }
