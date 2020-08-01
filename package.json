@@ -2,6 +2,7 @@
   "name": "realtime-weather-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://a985724.github.io/realtime-weather-app",
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
@@ -14,6 +15,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
