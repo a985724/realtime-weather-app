@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import App from './components/App';
 import './styles.css';
+import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
@@ -10,4 +11,4 @@ ReactDOM.render(
   document.querySelector('#root')
 );
 
-ServiceWorker.register();
+serviceWorker.register();
